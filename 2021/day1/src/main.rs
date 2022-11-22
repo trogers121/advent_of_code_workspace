@@ -13,8 +13,10 @@ fn main() {
         nums.push(num.parse::<i32>().unwrap());
     }
     let mut larger_cnt: i32 = 0;
-    for i in 1..(nums.len()) {
-        if nums[i] > nums[i - 1] {
+    for i in 1..(nums.len() - 2) {
+        let curr_sum: i32 = nums[i] + nums[i + 1] + nums[i + 2];
+        let prev_sum: i32 = nums[i - 1] + nums[i] + nums[i + 1];
+        if curr_sum > prev_sum {
             larger_cnt += 1;
         }
     }
