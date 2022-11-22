@@ -3,8 +3,6 @@ use std::fs;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    // dbg!(args);
-    // println!("I got {:?} arguments: {:?}.", args.len() - 1, &args[1..]);
 
     //TODO: Add argument checks to ensure this is an argument, and this file exists
     let filepath = &args[1];
@@ -14,10 +12,12 @@ fn main() {
     for num in contents.split_whitespace() {
         nums.push(num.parse::<i32>().unwrap());
     }
-
-    for n in nums {
-        println!("{}", n);
+    let mut larger_cnt: i32 = 0;
+    for i in 1..(nums.len()) {
+        if nums[i] > nums[i - 1] {
+            larger_cnt += 1;
+        }
     }
 
-    // println!("File contents:\n{}", nums);
+    println!("{}", larger_cnt);
 }
